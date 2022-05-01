@@ -33,6 +33,10 @@ const promptUser = () => {
       if (choices === "View all Roles") {
         list.listAllRoles();
       }
+      // view all employees
+      if (choices === "View all Employees") {
+        list.listAllEmployees();
+      }
       // Exit
       if (choices === "Exit") {
         db.end();
