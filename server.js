@@ -64,7 +64,11 @@ const promptUser = () => {
 
 db.connect((err) => {
   if (err) throw err;
-  console.log("Database connected");
+  console.log("**********************");
+  console.log("*                    *");
+  console.log("*  Employee Tracker  *");
+  console.log("*                    *");
+  console.log("**********************");
   promptUser();
 });
 

@@ -5,7 +5,7 @@ const db = require('../db/connection');
 const list = {
   // list all departments
   listAllDepartments() {
-    const sql = `SELECT id AS "ID", dept_name FROM departments`;
+    const sql = `SELECT id, dept_name AS Departments FROM departments`;
 
     db.promise()
     .query(sql)
