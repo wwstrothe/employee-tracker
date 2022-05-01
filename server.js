@@ -3,6 +3,8 @@ const db = require('./db/connection');
 
 // import prompts
 const list = require('./utils/list')
+const add = require('./utils/add')
+const update = require('./utils/update')
 
 const promptUser = () => {
   inquirer
@@ -36,6 +38,15 @@ const promptUser = () => {
       // view all employees
       if (choices === "View all Employees") {
         list.listAllEmployees();
+      }
+      if (choices === "Add a Department") {
+        add.addDepartment();
+      }
+      if (choices === "Add a Role") {
+        add.addDepartment();
+      }
+      if (choices === "Add an Employee") {
+        add.addDepartment();
       }
       // Exit
       if (choices === "Exit") {
