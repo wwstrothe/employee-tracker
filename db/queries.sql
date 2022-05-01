@@ -14,5 +14,9 @@ LEFT JOIN employees m ON e.manager_id = m.id
 LEFT JOIN roles r ON e.role_id = r.id
 LEFT JOIN departments d ON d.id = dept_id;
 
-/*add database */
+/*add database*/
 INSERT INTO department (dept_name) VALUES ?
+
+/*add roles*/
+INSERT INTO role (title, salary, dept_id)
+VALUES (?, ?, ?)

@@ -43,10 +43,10 @@ const promptUser = () => {
         add.addDepartment();
       }
       if (choices === "Add a Role") {
-        add.addDepartment();
+        add.addRole();
       }
       if (choices === "Add an Employee") {
-        add.addDepartment();
+        add.addEmployee();
       }
       // Exit
       if (choices === "Exit") {
