@@ -17,6 +17,11 @@ LEFT JOIN departments d ON d.id = dept_id;
 /*add database*/
 INSERT INTO department (dept_name) VALUES ?
 
-/*add roles*/
+/*add role*/
 INSERT INTO role (title, salary, dept_id)
 VALUES (?, ?, ?)
+
+/*add employee*/
+INSERT INTO employees (first_name, last_name, role_id, manager_id)
+VALUES (?, ?, ?, ?)
+

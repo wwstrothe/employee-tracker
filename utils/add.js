@@ -30,6 +30,7 @@ const add = {
       });
   },
 
+  // add role
   addRole() {
     // select department names and add create option
     const sql = "SELECT * FROM departments";
@@ -109,6 +110,95 @@ const add = {
       });
   },
 
+  // add employee
+  addEmployee() {
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          name: "firstName",
+          message: "Enter the employee's first name? (Required)",
+          validate: function validateName(input) {
+            return input !== "";
+          },
+        },
+        {
+          type: "input",
+          name: "lastName",
+          message: "Enter the employee's last name? (Required)",
+          validate: function validateName(input) {
+            return input !== "";
+          },
+        },
+      ])
+      .then((answer) => {
+        const newEmployee = [answer.firstName, answer.lastName];
+
+        // select employee's roles:
+        const roleSql = `SELECT roles.id, roles.title FROM roles`;
+
+        db.promise()
+          .query(roleSql)
+          .then(([data]) => {
+            const roles = data.map(({ id, title }) => ({
+              name: title,
+              value: id,
+            }));
+            inquirer
+              .prompt([
+                {
+                  type: "list",
+                  name: "role",
+                  message: "Select the employee's role?",
+                  choices: roles,
+                },
+              ])
+              .then((roleChoice) => {
+                const role = roleChoice.role;
+                newEmployee.push(role);
+
+                // select employee's manager:
+                const mSql = `SELECT * FROM employees`;
+
+                db.promise()
+                  .query(mSql)
+                  .then(([data]) => {
+                    const managers = data.map(
+                      ({ id, first_name, last_name }) => ({
+                        name: first_name + " " + last_name,
+                        value: id,
+                      })
+                    );
+                    inquirer
+                      .prompt([
+                        {
+                          type: "list",
+                          name: "manager",
+                          message: "Select the employee's manager?",
+                          choices: managers,
+                        },
+                      ])
+                      .then((mChoice) => {
+                        const manager = mChoice.manager;
+                        newEmployee.push(manager);
+
+                        // add newEmployee to db:
+                        const sql = `INSERT INTO employees (first_name, last_name, role_id, manager_id)
+                            VALUES (?, ?, ?, ?)`;
+
+                        db.promise()
+                          .query(sql, newEmployee)
+                          .then(() => {
+                            console.log("New employee has been added!");
+                            app.promptUser();
+                          })
+                          .catch((error) => console.log(error));
+                      });
+                  });
+              });
+          });
+      });
+  },
 };
 
 module.exports = add

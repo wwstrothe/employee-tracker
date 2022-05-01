@@ -20,7 +20,7 @@ const promptUser = () => {
           "Add a Department",
           "Add a Role",
           "Add an Employee",
-          "Update an Employee",
+          "Update an Employee's Role",
           "Exit"
         ],
       },
@@ -39,14 +39,21 @@ const promptUser = () => {
       if (choices === "View all Employees") {
         list.listAllEmployees();
       }
+      // add a department
       if (choices === "Add a Department") {
         add.addDepartment();
       }
+      // add a role
       if (choices === "Add a Role") {
         add.addRole();
       }
+      // add an employee
       if (choices === "Add an Employee") {
         add.addEmployee();
+      }
+      // update an employees role
+      if (choices === "Update an Employee's Role") {
+        update.updateEmployeesRole();
       }
       // Exit
       if (choices === "Exit") {
