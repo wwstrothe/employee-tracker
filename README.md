@@ -8,7 +8,6 @@
   * [Installation](#installation)
   * [Usage](#usage)
   * [Demo](#demo)
-  * [Image](#image)
   * [Contribution](#contribution)
   * [Tests](#tests)
   * [Questions](#questions)
@@ -29,11 +28,10 @@
   
   Type the following command into the Integrated Terminal:
   - npm start
-  - node server.js 
   
   ## [Demo](#table-of-contents)
 
-  ## [Image](#table-of-contents)
+  Click [here](https://drive.google.com/file/d/1LcHUaJPSaW5e5xOK6ASeEqGqL-5pezQI/view "full walkthrough video") for a full demonstration.
   
   ## [Contribution](#table-of-contents)
 
